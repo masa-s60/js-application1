@@ -31,7 +31,7 @@ const calc = (fizz, buzz) => {
 
 button.addEventListener('click', () => {
   reset();
-  if((integer.test(fizzValue.value) === true) && (integer.test(buzzValue.value) === true)) {
+  if((integer.test(fizzValue.value)) && (integer.test(buzzValue.value))) {
     outputChild.innerHTML = calc(fizzValue.value, buzzValue.value);
     outputParent.appendChild(outputChild);
   } else {
