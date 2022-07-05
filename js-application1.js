@@ -25,7 +25,6 @@ const calc = (fizz, buzz) => {
       }
     }
   }
-  console.log(result);
   return result;
 }
 
