@@ -4,28 +4,27 @@ const button = document.getElementById('button');
 const integer = /^[1-9]|0[1-9]|[1-9][0-9]$/;
 const outputParent = document.getElementById('div');
 const outputChild = document.createElement('p');
-let result = '';
 
 const reset = () => {
   outputChild.remove();
-  result = '';
 }
 
 const calc = (fizz, buzz) => {
+  let text = '';
   for (let i = 1; i <= 99; i++) {
     if((i % fizz === 0) && (i % buzz === 0)) {
-      result = result.concat(`FizzBuzz ${i}<br>`);
+      text = text.concat(`FizzBuzz ${i}<br>`);
     } else {
       if(i % fizzValue.value === 0) {
-        result = result.concat(`Fizz ${i}<br>`);
+        text = text.concat(`Fizz ${i}<br>`);
       } else {
         if(i % buzzValue.value === 0) {
-          result = result.concat(`Buzz ${i}<br>`);
+          text = text.concat(`Buzz ${i}<br>`);
         }
       }
     }
   }
-  return result;
+  return text;
 }
 
 button.addEventListener('click', () => {
