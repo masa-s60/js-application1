@@ -2,39 +2,47 @@ const fizzValue = document.getElementById('fizz');
 const buzzValue = document.getElementById('buzz');
 const button = document.getElementById('button');
 const integer = /^[1-9]|0[1-9]|[1-9][0-9]$/;
-const outputParent = document.getElementById('div');
-const outputChild = document.createElement('p');
+const parent = document.getElementById('div');
 
 const reset = () => {
-  outputChild.remove();
+  while(parent.firstChild !== null) {
+    parent.removeChild(parent.firstChild);
+  }
 }
 
-const calc = (fizz, buzz) => {
-  let text = '';
+const outputDisplay = (fizz, buzz) => {
   for (let i = 1; i <= 99; i++) {
     if((i % fizz === 0) && (i % buzz === 0)) {
-      text = text.concat(`FizzBuzz ${i}<br>`);
+      const child = document.createElement('p');
+      child.textContent = `${i}BuzzFizz`;
+      parent.appendChild(child);
     } else {
       if(i % fizzValue.value === 0) {
-        text = text.concat(`Fizz ${i}<br>`);
+        const child = document.createElement('p');
+        child.textContent = `${i}Fizz`;
+        parent.appendChild(child);
       } else {
         if(i % buzzValue.value === 0) {
-          text = text.concat(`Buzz ${i}<br>`);
+          const child = document.createElement('p');
+          child.textContent = `${i}Buzz`;
+          parent.appendChild(child);
         }
       }
     }
   }
-  return text;
+}
+
+const reDoDisplay = () => {
+  const child = document.createElement('p');
+  child.textContent = '整数値を入力してください';
+  parent.appendChild(child);
 }
 
 button.addEventListener('click', () => {
   reset();
   if((integer.test(fizzValue.value)) && (integer.test(buzzValue.value))) {
-    outputChild.innerHTML = calc(fizzValue.value, buzzValue.value);
-    outputParent.appendChild(outputChild);
+    outputDisplay(fizzValue.value, buzzValue.value);
   } else {
-    outputChild.innerHTML = '整数値を入力してください';
-    outputParent.appendChild(outputChild);
+    reDoDisplay();
   }
 });
-
