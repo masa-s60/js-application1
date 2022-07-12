@@ -5,9 +5,7 @@ const integer = /^[1-9]|0[1-9]|[1-9][0-9]$/;
 const parent = document.getElementById('div');
 
 const reset = () => {
-  while(parent.firstChild !== null) {
-    parent.removeChild(parent.firstChild);
-  }
+    parent.innerHTML = '';
 }
 
 const outputDisplay = (fizz, buzz) => {
