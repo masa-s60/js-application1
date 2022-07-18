@@ -8,16 +8,22 @@ const reset = () => {
     parent.innerHTML = '';
 }
 
+const fizzBuzzType = {
+  fizzBuzz: 1,
+  fizz: 2,
+  buzz: 3
+}
+
 const createElement = (key, num) => {
-  if(key === 1) {
+  if(key === fizzBuzzType.fizzBuzz) {
     const child = document.createElement('li');
-    child.textContent = `${num}BuzzFizz`;
+    child.textContent = `${num}FizzBuzz`;
     parent.appendChild(child);
-  } else if(key === 2) {
+  } else if(key === fizzBuzzType.fizz) {
     const child = document.createElement('li');
     child.textContent = `${num}Fizz`;
     parent.appendChild(child);
-  } else if(key === 3) {
+  } else if(key === fizzBuzzType.buzz) {
     const child = document.createElement('li');
     child.textContent = `${num}Buzz`;
     parent.appendChild(child);
@@ -27,11 +33,11 @@ const createElement = (key, num) => {
 const outputDisplay = (fizz, buzz) => {
   for (let i = 1; i <= 99; i++) {
     if((i % fizz === 0) && (i % buzz === 0)) {
-      createElement(1, i);
+      createElement(fizzBuzzType.fizzBuzz, i);
     } else if(i % fizzValue.value === 0) {
-      createElement(2, i);
+      createElement(fizzBuzzType.fizz, i);
     } else if(i % buzzValue.value === 0) {
-      createElement(3, i);
+      createElement(fizzBuzzType.buzz, i);
     }
   }
 }
